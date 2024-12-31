@@ -1,0 +1,14 @@
+﻿@model B3WebsiteBanHang.Models.Product
+@{
+    ViewData["Title"] = "SearchProducts";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>SearchProducts</h1>
+
+
+@using (Html.BeginForm("SearchProducts", "Products", FormMethod.Get))
+{
+    <input type="text" name="query" placeholder="Tìm Sản phẩm" />
+    <input type="submit" value="Search" />
+}

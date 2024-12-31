@@ -1,0 +1,197 @@
+
+/* Reset CSS để loại bỏ các mặc định của trình duyệt */
+* {
+    margin: 0; 
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Thiết lập font chung cho trang web */
+body {
+    font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    background-color:#f2f2f2;
+    display: grid;
+    grid-template-columns: 80% 20%;
+    /* Chia trang thành hai cột */ 
+    /* Độ rộng tối đa của trang web */ 
+    margin: 0 auto;
+    /* Canh giữa trang web trên màn hình */
+}
+
+/* Phần tiêu đề trang web */
+header {
+    background-color:chartreuse; 
+    color:black;
+    padding: 20px;
+    text-align: center;
+    grid-column: 1/ span 2;
+    /* Trải đều qua cả hai cột */
+}
+
+/* Phần menu điều hướng */
+nav {
+    background-color:#a38277;
+    color: #fff;
+    text-align:left; 
+    padding: 10px;
+    grid-column: 1/ span 2;
+    /* Trải đều qua cả hai cột */
+}
+
+nav ul {
+    list-style: none;
+}
+    
+nav ul li {
+    display: inline;
+    margin-right: 20px;
+}
+
+/* Phần danh sách sản phẩm */
+.product-list {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); 
+    /* Hiển thị 3 sản phẩm trên mỗi hàng */ 
+    text-align:left;
+    /* Khoảng cách giữa các sản phẩm */ 
+    padding: 20px;
+    grid-column: 1;
+    /* Chỉ nằm ở cột đầu tiên */
+}
+
+.product-card {
+    background-color:#fff;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 10px;
+    width: 100%;    
+    text-align:left; /* Căn giữa nội dung trong sản phẩm */
+}
+    
+.product-card img {
+    max-width: 100%;
+    height: auto;
+}
+
+a{
+    text-decoration: none;
+}
+
+/* Phan sidebar */
+.sidebar {
+    display: grid;
+    grid-template-rows: repeat(2,1fr);
+    font-size: 20px;
+    /*background-color:aqua;*/
+    color:black;
+    padding: 20px;
+    grid-column: 2;
+    /* Chỉ nằm ở cột thứ hai */
+}
+
+.sidebar-items{
+    background-color:aquamarine;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 10px;
+    width: 100%;
+    height: min-content;
+    text-align:left; /* Căn giữa nội dung trong sản phẩm */
+}
+
+img{
+    width: 300px;
+    height: 400px;
+}
+
+.social-icons {
+    margin-top: 20px;
+}
+
+.social-icons a {    
+    color: blue;
+    text-decoration: none;
+    display: block;
+    margin-bottom: 10px;    
+}
+
+/* Chỉnh lại bố cục cho màn hình thiết bị di động */ 
+@media (max-width: 576px) {
+    .product-list {
+        grid-template-columns: 1fr;
+        /* Hiển thị một sản phẩm trên mỗi hàng */
+    }
+
+    .product-card {
+        width: 100%;
+        margin-bottom: 20px;
+    }
+
+    .sidebar {
+        grid-column: 1/ span 2;
+        /* Trải đều qua cả hai cột */
+    }
+
+    /* Chỉnh lại bố cục cho phần footer */
+    .footer {
+        grid-template-columns: 1fr;
+        /* 1 cột xếp chồng lên nhau trên màn hình di động */
+    }
+}
+
+/* Phần footer */
+.footer {
+    background-color:#ddd;
+    color:black;
+    text-align: center;
+    padding: 20px;    
+    grid-column: 1 / span 2;
+    /* Trải đều qua cả hai cột */ 
+    display: grid;
+}
+
+.imglogo {
+    width: 100px;
+    height: 100px;
+}
+
+/* Cột trong phần footer */ 
+.footer-item {
+    padding: 10px;
+}
+
+/* Chỉnh layout cho máy tính */
+@media (min-width: 768px) {
+    .footer {
+        grid-template-columns: 30% 70%;
+        /* 3 cột trên máy tính */
+    }
+}
+
+.button {
+    background-color: #04AA6D; 
+    border: none;
+    color: white; 
+    padding: 20px; 
+    text-align: center; 
+    text-decoration: none; 
+    display: inline-block; 
+    font-size: 16px;
+    margin: 4px 2px;
+}
+
+.button1 {
+    border-radius: 2px;
+}
+
+.button2 {
+    border-radius: 8px;
+}
+
+.button3 {
+    border-radius: 12px;
+}
+
+.button4 {
+    border-radius: 50%;
+}

@@ -1,0 +1,105 @@
+﻿@using Microsoft.AspNetCore.Identity
+@using NguyenMinhThang.Models
+@* @model IEnumerable<B3WebsiteBanHang.Models.Product> *@
+@model PaginatedList<B3WebsiteBanHang.Models.Product>
+@inject SignInManager<ApplicationUser> SingInManager
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Index</h1>
+@* @{
+    @if (SignInManager.IsSignIn(User) && User.IsInRole("admin"))
+    {
+        <p>
+            
+        </p
+    }
+} *@
+    <a asp-action="Create">Create New</a>
+    @using (Html.BeginForm("SearchProducts", "Product", FormMethod.Get))
+    {
+        <input type="text" name="query" placeholder="Tìm Sản phẩm" />
+        <input type="submit" value="Search" />
+    }
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Name
+            </th>
+            <th>
+                Price
+            </th>
+            <th>
+                Description
+            </th>
+            <th>
+                ImageUrl
+            </th>
+            <th>
+                Category
+            </th>
+            <th> </th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Price)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Description)
+            </td>
+            <td>
+                <image src="@item.ImageUrl" alt="Product Image" style="max-width:200px;"/>
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Category.Name)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>   |
+                    <a asp-controller="ShoppingCart" asp-action="AddToCart" asp-route-id="@item.Id">Order</a>
+            </td>
+        </tr>}
+    </tbody>
+</table>
+
+<div>
+    <nav aria-label="Page navigation">
+        <ul class="pagination">
+            @for (int i = 1; i <= @Model.TotalPages; i++)
+            {
+                <li class="page-item @(i == @Model.PageIndex ?
+
+"active" : "")">
+
+                    <a class="page-link"
+                       href="@Url.Action("Index", new { pageNumber = i })">@i</a>
+
+                </li>
+            }
+        </ul>
+    </nav>
+</div>
+
+@*  @{ var prevDisabled = !Model.HasPreviousPage ? "disabled" : "";
+    var nextDisabled = !Model.HasNextPage ? "disabled" : ""; }
+    <a asp-action="Index"
+    asp-route-pageNumber="@(Model.PageIndex - 1)" class="btn btn-default
+    @prevDisabled">
+    Previous
+    </a>
+    <a asp-action="Index"
+    asp-route-pageNumber="@(Model.PageIndex + 1)"
+    class="btn btn-default @nextDisabled">
+    Next
+    </a> *@
